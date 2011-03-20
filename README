@@ -1,0 +1,8 @@
+TimeServices provides a way to access the current time but it makes it possible to switch implementation. It has been created with Dependency Injection in mind, so you can use it with you favorite container or use poor mans dependency injection. The library provides a basic interface, IClock, which provides a few ways to get the current time. It also provides a few basic implementations:
+* SystemClock: Get the time from the system (production)
+* FixedClock: Get the time from the values provided (unit tests)
+* ServiceClock: Get the time from a remote source
+
+I've also included some experimental/useless wrapped implementations, which probably never will/should be used:
+* CompensatingClock: Compensate for clocks with lag
+* OffsetClock: Subtract a provided amount of the wrapped clock

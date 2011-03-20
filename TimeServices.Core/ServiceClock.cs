@@ -33,6 +33,10 @@ namespace TimeServices.Core
     {
         private readonly IClockService _clockService;
 
+        /// <summary>
+        /// Create a new instance of <see cref="ServiceClock"/>.
+        /// </summary>
+        /// <param name="clockService">The WCF client</param>
         public ServiceClock(IClockService clockService)
         {
             _clockService = clockService;
@@ -49,7 +53,7 @@ namespace TimeServices.Core
         /// <summary>
         /// Gets a <see cref="DateTime"/> set to the coordinated universal time.
         /// </summary>
-        public DateTime NowUtc
+        public DateTime UtcNow
         {
             get { return _clockService.GetNow(true); }
         }

@@ -32,19 +32,21 @@ namespace TimeServices.Core
     public class FixedClock : IClock
     {
         /// <summary>
-        /// 
+        /// Create a new instance of <see cref="FixedClock"/>.
         /// </summary>
-        /// <param name="now"></param>
-        /// <param name="nowUtc"></param>
-        /// <param name="nowAsOffset"></param>
-        public FixedClock(DateTime now, DateTime nowUtc, DateTimeOffset nowAsOffset)
+        /// <param name="now">The <see cref="DateTime"/> used by <see cref="Now"/></param>
+        /// <param name="utcNow">The <see cref="DateTime"/> used by <see cref="UtcNow"/></param>
+        /// <param name="nowAsOffset">The <see cref="DateTimeOffset"/> used by <see cref="NowAsOffset"/></param>
+        public FixedClock(DateTime now, DateTime utcNow, DateTimeOffset nowAsOffset)
         {
             Now = now;
-            NowUtc = nowUtc;
+            UtcNow = utcNow;
             NowAsOffset = nowAsOffset;
         }
 
-
+        /// <summary>
+        /// Create a new instance of <see cref="FixedClock"/>. (Remember to set at least <see cref="Now"/>, <see cref="UtcNow"/> or <see cref="NowAsOffset"/>)
+        /// </summary>
         public FixedClock()
         {
         }
@@ -57,7 +59,7 @@ namespace TimeServices.Core
         /// <summary>
         /// Gets a <see cref="DateTime"/> set to the coordinated universal time.
         /// </summary>
-        public DateTime NowUtc { get; set; }
+        public DateTime UtcNow { get; set; }
 
         /// <summary>
         /// Gets a <see cref="DateTimeOffset"/> with it's offset set to the source's local time.

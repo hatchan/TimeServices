@@ -38,7 +38,7 @@ namespace TimeServices.Core
         /// <summary>
         /// Gets a <see cref="DateTime"/> set to the coordinated universal time.
         /// </summary>
-        DateTime NowUtc { get; }
+        DateTime UtcNow { get; }
 
         /// <summary>
         /// Gets a <see cref="DateTimeOffset"/> with it's offset set to the source's local time.

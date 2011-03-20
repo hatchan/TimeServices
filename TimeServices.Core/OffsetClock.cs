@@ -33,6 +33,11 @@ namespace TimeServices.Core
         private readonly IClock _clock;
         private readonly TimeSpan _timeSpan;
 
+        /// <summary>
+        /// Create a new instance of <see cref="OffsetClock"/>.
+        /// </summary>
+        /// <param name="clock">The inner <see cref="IClock"/> on which to apply the offset</param>
+        /// <param name="timeSpan">The offset</param>
         public OffsetClock(IClock clock, TimeSpan timeSpan)
         {
             _clock = clock;
@@ -50,9 +55,9 @@ namespace TimeServices.Core
         /// <summary>
         /// Gets a <see cref="DateTime"/> set to the coordinated universal time.
         /// </summary>
-        public DateTime NowUtc
+        public DateTime UtcNow
         {
-            get { return _clock.NowUtc - _timeSpan; }
+            get { return _clock.UtcNow - _timeSpan; }
         }
 
         /// <summary>

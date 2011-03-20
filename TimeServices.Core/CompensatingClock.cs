@@ -35,6 +35,10 @@ namespace TimeServices.Core
     {
         private readonly IClock _clock;
 
+        /// <summary>
+        /// Create a new instance of <see cref="CompensatingClock"/>.
+        /// </summary>
+        /// <param name="clock">The inner <see cref="IClock"/> on which to apply the compensating.</param>
         public CompensatingClock(IClock clock)
         {
             _clock = clock;
@@ -67,12 +71,12 @@ namespace TimeServices.Core
         /// <summary>
         /// Gets a <see cref="DateTime"/> set to the coordinated universal time.
         /// </summary>
-        public DateTime NowUtc
+        public DateTime UtcNow
         {
             get
             {
                 var stopwatch = Stopwatch.StartNew();
-                var result = _clock.NowUtc;
+                var result = _clock.UtcNow;
                 stopwatch.Stop();
                 return result - TimeSpanDividedByTwo(stopwatch.Elapsed);
             }

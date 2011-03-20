@@ -31,6 +31,8 @@ namespace TimeServices.Core
     /// </summary>
     public class SystemClock : IClock
     {
+        private static readonly SystemClock SystemClockInstance = new SystemClock();
+
         /// <summary>
         /// Gets a <see cref="DateTime"/> set to the source's local time.
         /// </summary>
@@ -42,7 +44,7 @@ namespace TimeServices.Core
         /// <summary>
         /// Gets a <see cref="DateTime"/> set to the coordinated universal time.
         /// </summary>
-        public DateTime NowUtc
+        public DateTime UtcNow
         {
             get { return DateTime.UtcNow; }
         }
@@ -53,6 +55,17 @@ namespace TimeServices.Core
         public DateTimeOffset NowAsOffset
         {
             get { return DateTimeOffset.Now; }
+        }
+
+        /// <summary>
+        /// Get a static instance of <see cref="SystemClock"/>.
+        /// </summary>
+        public static SystemClock Instance
+        {
+            get
+            {
+                return SystemClockInstance;
+            }
         }
     }
 }
